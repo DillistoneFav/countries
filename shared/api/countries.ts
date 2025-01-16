@@ -12,5 +12,9 @@ const API_URL = 'https://gist.githubusercontent.com/sanchezzzhak/8606e9607396fb5
 export const fetchCountries = async (): Promise<TCountry[]> => {
     const res = await fetch(API_URL);
 
+    if (!res.ok) {
+        throw new Error(res.statusText);
+    }
+
     return res.json();
 }
